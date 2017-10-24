@@ -10,11 +10,14 @@ module.exports.readAll = function readAll(req, res, payload, cb) {
     console.log(payload.sortField);
     switch(payload.sortField){
         case 'id':
-            console.log('hey');
             sortOrder(payload, (a, b)=>{
                 return a.id - b.id;
             })
             break;
+        case 'title':
+            sortOrder(payload, (a, b)=>{
+                a.title.localeCompare(b.title);
+            })            
     }
    
    

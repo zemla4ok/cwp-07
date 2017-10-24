@@ -1,0 +1,8 @@
+	3.10.2017 12:40:38
+                URL: /api/articles/readall
+                Request: {"sortField":"title","sortOrder":"desc"}
+                ********************************************
+	3.10.2017 12:40:56
+                URL: /api/articles/readall
+                Request: {"sortField":"title","sortOrder":"asc"}
+                ********************************************
