@@ -1,0 +1,20 @@
+	3.10.2017 13:8:21
+                URL: /api/articles/readall
+                Request: {"id":1,"title":"Wind 10 Fall Creators","text":"Сегодня завезут свежую обновку винды","date":"17-10-2017","author":"onliner.by"}
+                ********************************************
+	3.10.2017 13:8:47
+                URL: /api/articles/readall
+                Request: {"id":1,"title":"Wind 10 Fall Creators","text":"Сегодня завезут свежую обновку винды","date":"17-10-2017","author":"onliner.by","comments":42}
+                ********************************************
+	3.10.2017 13:12:27
+                URL: /api/articles/readall
+                Request: {"id":1,"title":"Wind 10 Fall Creators","text":"Сегодня завезут свежую обновку винды","date":"17-10-2017","author":"tut.by","comments":42}
+                ********************************************
+	3.10.2017 13:12:40
+                URL: /api/articles/readall
+                Request: {"id":1,"title":"Wind 10 Fall Creators","text":"Сегодня завезут свежую обновку винды","date":"17-10-2017","author":"onliner.by","comments":42}
+                ********************************************
+	3.10.2017 13:13:7
+                URL: /api/articles/readall
+                Request: {"id":1,"title":"Wind 10 Fall Creators","text":"Сегодня завезут свежую обновку винды","date":"17-10-2017","author":"onliner.by"}
+                ********************************************
