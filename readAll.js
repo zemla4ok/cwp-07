@@ -6,18 +6,34 @@ let articles = require('./articles.json');
 let sortedArticles;
 
 module.exports.readAll = function readAll(req, res, payload, cb) {
-    sortedArticles = articles;
+    sortedArticles = articles.slice();
     console.log(payload.sortField);
     switch(payload.sortField){
         case 'id':
-            sortOrder(payload, (a, b)=>{
+            sortOrd(payload, (a, b)=>{
                 return a.id - b.id;
             })
             break;
         case 'title':
-            sortOrder(payload, (a, b)=>{
+            sortOrd(payload, (a, b)=>{
                 a.title.localeCompare(b.title);
-            })            
+            })  
+            break;
+        case 'text':
+            sortOrd(payload, (a, b)=>{
+                a.text.localeCompare(b.text);
+            })    
+            break;
+        case 'date':
+            sortOrd(payload, (a, b)=>{
+                a.date.localeCompare(b.date);
+            })    
+            break;
+        case 'author':
+            sortOrd(payload, (a, b)=>{
+                a.author.localeCompare(b.author);
+            })    
+            break;
     }
    
    
@@ -25,7 +41,7 @@ module.exports.readAll = function readAll(req, res, payload, cb) {
     cb(null, sortedArticles);
 }
 
-function sortOrder(payload, func){
+function sortOrd(payload, func){
     sortedArticles.sort(func);
     if(payload.sortOrder === ascOrder){
         sortedArticles.reverse();

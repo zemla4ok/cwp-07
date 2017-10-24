@@ -1,8 +1,104 @@
-	3.10.2017 12:40:38
+	3.10.2017 20:58:33
                 URL: /api/articles/readall
-                Request: {"sortField":"title","sortOrder":"desc"}
+                Request: {"sortField":"date","sortOrder":"asc"}
                 ********************************************
-	3.10.2017 12:40:56
+	3.10.2017 20:58:34
                 URL: /api/articles/readall
-                Request: {"sortField":"title","sortOrder":"asc"}
+                Request: {"sortField":"date","sortOrder":"asc"}
+                ********************************************
+	3.10.2017 20:58:35
+                URL: /api/articles/readall
+                Request: {"sortField":"date","sortOrder":"asc"}
+                ********************************************
+	3.10.2017 20:58:35
+                URL: /api/articles/readall
+                Request: {"sortField":"date","sortOrder":"asc"}
+                ********************************************
+	3.10.2017 20:58:36
+                URL: /api/articles/readall
+                Request: {"sortField":"date","sortOrder":"asc"}
+                ********************************************
+	3.10.2017 20:58:36
+                URL: /api/articles/readall
+                Request: {"sortField":"date","sortOrder":"asc"}
+                ********************************************
+	3.10.2017 20:58:36
+                URL: /api/articles/readall
+                Request: {"sortField":"date","sortOrder":"asc"}
+                ********************************************
+	3.10.2017 20:58:37
+                URL: /api/articles/readall
+                Request: {"sortField":"date","sortOrder":"asc"}
+                ********************************************
+	3.10.2017 20:58:37
+                URL: /api/articles/readall
+                Request: {"sortField":"date","sortOrder":"asc"}
+                ********************************************
+	3.10.2017 20:58:37
+                URL: /api/articles/readall
+                Request: {"sortField":"date","sortOrder":"asc"}
+                ********************************************
+	3.10.2017 20:58:42
+                URL: /api/articles/readall
+                Request: {"sortField":"date","sortOrder":"asc"}
+                ********************************************
+	3.10.2017 20:58:42
+                URL: /api/articles/readall
+                Request: {"sortField":"date","sortOrder":"asc"}
+                ********************************************
+	3.10.2017 20:58:42
+                URL: /api/articles/readall
+                Request: {"sortField":"date","sortOrder":"asc"}
+                ********************************************
+	3.10.2017 20:58:42
+                URL: /api/articles/readall
+                Request: {"sortField":"date","sortOrder":"asc"}
+                ********************************************
+	3.10.2017 20:58:43
+                URL: /api/articles/readall
+                Request: {"sortField":"date","sortOrder":"asc"}
+                ********************************************
+	3.10.2017 20:58:47
+                URL: /api/articles/readall
+                Request: {"sortField":"date","sortOrder":"desc"}
+                ********************************************
+	3.10.2017 20:58:48
+                URL: /api/articles/readall
+                Request: {"sortField":"date","sortOrder":"desc"}
+                ********************************************
+	3.10.2017 20:58:48
+                URL: /api/articles/readall
+                Request: {"sortField":"date","sortOrder":"desc"}
+                ********************************************
+	3.10.2017 20:58:49
+                URL: /api/articles/readall
+                Request: {"sortField":"date","sortOrder":"desc"}
+                ********************************************
+	3.10.2017 20:58:54
+                URL: /api/articles/readall
+                Request: {"sortField":"id","sortOrder":"desc"}
+                ********************************************
+	3.10.2017 20:58:55
+                URL: /api/articles/readall
+                Request: {"sortField":"id","sortOrder":"desc"}
+                ********************************************
+	3.10.2017 20:58:55
+                URL: /api/articles/readall
+                Request: {"sortField":"id","sortOrder":"desc"}
+                ********************************************
+	3.10.2017 20:58:55
+                URL: /api/articles/readall
+                Request: {"sortField":"id","sortOrder":"desc"}
+                ********************************************
+	3.10.2017 20:59:0
+                URL: /api/articles/readall
+                Request: {"sortField":"id","sortOrder":"asc"}
+                ********************************************
+	3.10.2017 20:59:0
+                URL: /api/articles/readall
+                Request: {"sortField":"id","sortOrder":"asc"}
+                ********************************************
+	3.10.2017 20:59:1
+                URL: /api/articles/readall
+                Request: {"sortField":"id","sortOrder":"asc"}
                 ********************************************
