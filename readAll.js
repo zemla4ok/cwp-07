@@ -26,7 +26,11 @@ module.exports.readAll = function readAll(req, res, payload, cb) {
             break;
         case 'date':
             sortOrd(payload, (a, b)=>{
-                a.date.localeCompare(b.date);
+                let myDateA = a.date.split('-');
+                let myDateB = b.date.split('-');
+                let dateA = new Date(parseInt(myDateA[2]), parseInt(myDateA[1]), parseInt(myDateA[0]));
+                let dateB = new Date(parseInt(myDateB[2]), parseInt(myDateB[1]), parseInt(myDateB[0])); 
+                return dateA - dateB;
             })    
             break;
         case 'author':
@@ -35,10 +39,12 @@ module.exports.readAll = function readAll(req, res, payload, cb) {
             })    
             break;
     }
-   
-   
+    //pages block
+    let articlesResponse = {items : sortedArticles, meta : { page : 1, pages: 0, count: 0, limit: 10}};
+    
+    //******************************* 
     log.log(file, '/api/articles/readall', payload);
-    cb(null, sortedArticles);
+    cb(null, articlesResponse);
 }
 
 function sortOrd(payload, func){
@@ -47,3 +53,5 @@ function sortOrd(payload, func){
         sortedArticles.reverse();
     }
 }
+
+ // 20-11 15^40
