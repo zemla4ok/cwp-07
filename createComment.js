@@ -1,5 +1,5 @@
 const log = require('./log.js');
-const file = require('fs').createWriteStream('logfile.log');
+const file = require('fs').createWriteStream('logfile.json');
 const validator = require('./validator.js');
 let articles = require('./articles.json');
 const err400 = { code: 400, message: 'Invalid request' };

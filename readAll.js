@@ -1,9 +1,10 @@
 const log = require('./log');
-const file = require('fs').createWriteStream('logfile.log');
+const file = require('fs').createWriteStream('logfile.json');
 const ascOrder = 'asc';
 const descOrder = 'desc';
 let articles = require('./articles.json');
 let sortedArticles = {};
+let err = {error:'400', errorText: 'Invalid request'};
 
 module.exports.readAll = function readAll(req, res, payload, cb) {
     sortedArticles = articles.slice();
@@ -38,9 +39,12 @@ module.exports.readAll = function readAll(req, res, payload, cb) {
                 a.author.localeCompare(b.author);
             })    
             break;
+        default:
+            cb(err);
+            return;
     }
     //comments
-    if(payload.includeDeps === false || payload.includeDeps === undefined){
+    if(payload.includeDeps === false){
         sortedArticles = sortedArticles.map((element) => {
             let obj = Object.assign({}, element);
             delete obj.comments;
@@ -59,6 +63,28 @@ module.exports.readAll = function readAll(req, res, payload, cb) {
     //******************************* 
     log.log(file, '/api/articles/readall', payload);
     cb(null, articlesResponse);
+}
+
+function checkOfPayload(payloads){
+    let payload = payloads;
+    if(payload === undefined){
+        payload = {
+            sortField: 'date',
+            sortOrder: 'desc',
+            page: 1,
+            limit: 10,
+            includeDeps: false
+        }
+    }
+    else{
+        if(payload.sortField === undefined)
+            payload.sortField = 'date';
+        if(payload.sortOrder === undefined)
+            payload.sortOrder = 'desc';
+        if(payload.includeDeps === undefined)
+            payload.includeDeps = false;
+    }
+    return payload;
 }
 
 function sortOrd(payload, func){

@@ -1,5 +1,5 @@
 const log = require('./log');
-const file = require('fs').createWriteStream('logfile.log');
+const file = require('fs').createWriteStream('logfile.json');
 let articles = require('./articles.json');
 
 module.exports.deleteArticle = function deleteArticle(req, res, payload, cb) {

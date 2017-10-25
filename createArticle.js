@@ -1,5 +1,5 @@
 const log = require('./log');
-const file = require('fs').createWriteStream('logfile.log');
+const file = require('fs').createWriteStream('logfile.json');
 const validator = require('./validator.js');
 let articles = require('./articles.json');
 const err = {code: 401, message: 'Invalid Article'};
