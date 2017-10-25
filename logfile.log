@@ -1,4 +1,8 @@
-	3.10.2017 22:52:53
+	4.10.2017 11:2:54
                 URL: /api/articles/readall
-                Request: {"sortField":"date","sortOrder":"desc"}
+                Request: {"sortField":"date","sortOrder":"desc","page":2,"limit":2,"includeDeps":false}
+                ********************************************
+	4.10.2017 11:3:6
+                URL: /api/articles/readall
+                Request: {"sortField":"date","sortOrder":"desc","page":2,"limit":2,"includeDeps":true}
                 ********************************************

@@ -3,7 +3,7 @@ const file = require('fs').createWriteStream('logfile.log');
 const ascOrder = 'asc';
 const descOrder = 'desc';
 let articles = require('./articles.json');
-let sortedArticles;
+let sortedArticles = {};
 
 module.exports.readAll = function readAll(req, res, payload, cb) {
     sortedArticles = articles.slice();
@@ -39,9 +39,23 @@ module.exports.readAll = function readAll(req, res, payload, cb) {
             })    
             break;
     }
+    //comments
+    if(payload.includeDeps === false || payload.includeDeps === undefined){
+        sortedArticles = sortedArticles.map((element) => {
+            let obj = Object.assign({}, element);
+            delete obj.comments;
+            return obj;   
+        });
+    }
     //pages block
-    let articlesResponse = {items : sortedArticles, meta : { page : 1, pages: 0, count: 0, limit: 10}};
-    
+    let articlesResponse = {items : sortedArticles, meta : { page : 1, pages: 0, count: articles.length, limit: 10}};
+    if(payload.page !== undefined){
+        articlesResponse.meta.page = payload.page;
+    }
+    if(payload.limit !== undefined){
+        articlesResponse.meta.limit = payload.limit;
+    }
+    articlesResponse.meta.pages = parseInt(articlesResponse.meta.count / articlesResponse.meta.limit);
     //******************************* 
     log.log(file, '/api/articles/readall', payload);
     cb(null, articlesResponse);
