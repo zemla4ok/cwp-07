@@ -1,5 +1,4 @@
 const log = require('./log');
-const file = require('fs').createWriteStream('logfile.json');
 const ascOrder = 'asc';
 const descOrder = 'desc';
 let articles = require('./articles.json');
@@ -7,8 +6,24 @@ let sortedArticles = {};
 let err = {error:'400', errorText: 'Invalid request'};
 
 module.exports.readAll = function readAll(req, res, payload, cb) {
+    if(payload === undefined){
+        payload = {
+            sortField: 'date',
+            sortOrder: 'desc',
+            page: 1,
+            limit: 10,
+            includeDeps: false
+        }
+    }
+    else{
+        if(payload.sortField === undefined)
+            payload.sortField = 'date';
+        if(payload.sortOrder === undefined)
+            payload.sortOrder = 'desc';
+        if(payload.includeDeps === undefined)
+            payload.includeDeps = false;
+    }
     sortedArticles = articles.slice();
-    console.log(payload.sortField);
     switch(payload.sortField){
         case 'id':
             sortOrd(payload, (a, b)=>{
@@ -59,32 +74,11 @@ module.exports.readAll = function readAll(req, res, payload, cb) {
     if(payload.limit !== undefined){
         articlesResponse.meta.limit = payload.limit;
     }
-    articlesResponse.meta.pages = parseInt(articlesResponse.meta.count / articlesResponse.meta.limit);
+    articlesResponse.meta.pages = Math.ceil(articlesResponse.meta.count / articlesResponse.meta.limit);
     //******************************* 
-    log.log(file, '/api/articles/readall', payload);
+    articlesResponse.items = articlesResponse.items.splice((articlesResponse.meta.page-1)*articlesResponse.meta.limit, articlesResponse.meta.limit*articlesResponse.meta.page);
+    log.log(null, '/api/articles/readall', payload);
     cb(null, articlesResponse);
-}
-
-function checkOfPayload(payloads){
-    let payload = payloads;
-    if(payload === undefined){
-        payload = {
-            sortField: 'date',
-            sortOrder: 'desc',
-            page: 1,
-            limit: 10,
-            includeDeps: false
-        }
-    }
-    else{
-        if(payload.sortField === undefined)
-            payload.sortField = 'date';
-        if(payload.sortOrder === undefined)
-            payload.sortOrder = 'desc';
-        if(payload.includeDeps === undefined)
-            payload.includeDeps = false;
-    }
-    return payload;
 }
 
 function sortOrd(payload, func){

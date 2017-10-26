@@ -1,9 +1,13 @@
+const logF = require('./logfile.json');
+
 module.exports.log=function log(file, url, data) {
-    const currentDate = new Date();
-    let info ={
-        date: currentDate,
+    console.log("reeeeeeeeee");
+    const current = new Date();
+    let info = {
+        date: (current.getDay() + 1) + '.' + (current.getMonth() + 1) + '.' + current.getFullYear() + ' ' + current.getHours() + ':' + current.getMinutes() + ':' + current.getSeconds(),
         url: url,
-        req: data
+        data: JSON.stringify(data)
     };
-    file.write(JSON.stringify(info));
+    logF.push(info);
+    require('fs').createWriteStream('logfile.json').write(JSON.stringify(logF));
 }
