@@ -10,7 +10,7 @@ const deleteArticle = require('./deleteArticle.js');
 const createComment = require('./createComment');
 const deleteComment = require('./deleteComment');
 const logs = require('./logs.js');
-
+const html = require('./html.js');
 
 const hostname = '127.0.0.1';
 const port = 3000;
@@ -23,13 +23,16 @@ const handlers = {
     '/api/articles/delete' : deleteArticle.deleteArticle,
     '/api/comments/create' : createComment.createComment,
     '/api/comments/delete' : deleteComment.deleteComment,
-    '/api/logs': logs.logs
+    '/api/logs': logs.logs,
+//****************************
+    '/' : html.getIndexHtml,
+    '/index.html' : html.getIndexHtml
 }
 
 const server = http.createServer((req, res) => {
     parseBodyJson(req, (err, payload) => {
         const handler = getHandler(req.url);
-        handler(req, res, payload, (err, result) => {
+        handler(req, res, payload, (err, result, header) => {
             if (err) {
                 res.statusCode = err.code;
                 res.setHeader('Content-Type', 'application/json');
@@ -37,9 +40,13 @@ const server = http.createServer((req, res) => {
                 return;
             }
             res.statusCode = 200;
-            res.setHeader('Content-Type', 'application/json');
-            changeArticles();
-            res.end(JSON.stringify(result));
+            res.setHeader('Content-Type', header);
+            if(header === 'application/json'){
+                changeArticles();
+                res.end(JSON.stringify(result));
+            }
+            else
+                res.end(result);
         })
     })
 });

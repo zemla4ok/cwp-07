@@ -8,8 +8,8 @@ module.exports.createArticle = function createArticle(req, res, payload, cb) {
     payload.id = Date.now();
     if (validator.isValidArticle(payload)) {
         articles.push(payload);
-        log.log(file, '/api/articles/create', payload);
-        cb(null, payload);
+        //log.log(file, '/api/articles/create', payload);
+        cb(null, payload, 'application/json');
         return;
     }
     else{

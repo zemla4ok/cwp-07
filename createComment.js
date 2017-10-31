@@ -11,12 +11,12 @@ module.exports.createComment = function createComment(req, res, payload, cb) {
         payload.id = Date.now();
         if(validator.isValidComment(payload)) {
             articles[ind].comments.push(payload);
-            log.log(file, '/api/comments/create', payload);
-            cb(null, articles);
+            //log.log(file, '/api/comments/create', payload);
+            cb(null, articles, 'application/json');
             return;
         }
         else{
-            cb(err401);
+            cb(err401, 'application/json');
             return;
         }
     }

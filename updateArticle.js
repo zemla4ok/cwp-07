@@ -13,7 +13,7 @@ module.exports.updateArticle = function updateArticle(req, res, payload, cb) {
                 articles[i].text = payload.text;
                 articles[i].date = payload.date;
                 articles[i].author = payload.author;
-                cb(null, payload);
+                cb(null, payload, 'application/json');
                 return;
             }
         }

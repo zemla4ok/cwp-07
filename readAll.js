@@ -77,8 +77,8 @@ module.exports.readAll = function readAll(req, res, payload, cb) {
     articlesResponse.meta.pages = Math.ceil(articlesResponse.meta.count / articlesResponse.meta.limit);
     //******************************* 
     articlesResponse.items = articlesResponse.items.splice((articlesResponse.meta.page-1)*articlesResponse.meta.limit, articlesResponse.meta.limit*articlesResponse.meta.page);
-    log.log(null, '/api/articles/readall', payload);
-    cb(null, articlesResponse);
+    //log.log(null, '/api/articles/readall', payload);
+    cb(null, articlesResponse, 'application/json');
 }
 
 function sortOrd(payload, func){
