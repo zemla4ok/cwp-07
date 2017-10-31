@@ -1,7 +1,7 @@
 const fs = require('fs');
 
-module.exports.getIndexHtml = (req, res, payload, cb)=>{
-    fs.readFile('./data/index.html', (err, data)=>{
+module.exports.appJS = (req, res, payload, cb)=>{
+    fs.readFile('./data/app.js', (err, data)=>{
         if(!err)
             cb(null, data, 'text/html');
         else
@@ -9,11 +9,11 @@ module.exports.getIndexHtml = (req, res, payload, cb)=>{
     })
 }
 
-module.exports.getFormHtml = (req, res, payload, cb)=>{
-    fs.readFile('./data/form.html', (err, data)=>{
+module.exports.formJS = (req, res, payload, cb)=>{
+    fs.readFile('./data/form.js', (err, data)=>{
         if(!err)
             cb(null, data, 'text/html');
-        else
+        else  
             console.error(err);
     })
 }

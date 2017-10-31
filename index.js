@@ -11,6 +11,8 @@ const createComment = require('./createComment');
 const deleteComment = require('./deleteComment');
 const logs = require('./logs.js');
 const html = require('./html.js');
+const js = require('./js.js');
+const css = require('./css.js');
 
 const hostname = '127.0.0.1';
 const port = 3000;
@@ -26,7 +28,11 @@ const handlers = {
     '/api/logs': logs.logs,
 //****************************
     '/' : html.getIndexHtml,
-    '/index.html' : html.getIndexHtml
+    '/index.html' : html.getIndexHtml,
+    '/form.html' : html.getFormHtml,
+    '/app.js' : js.appJS,
+    '/form.js' : js.formJS,
+    '/site.css' : css.siteCSS
 }
 
 const server = http.createServer((req, res) => {
