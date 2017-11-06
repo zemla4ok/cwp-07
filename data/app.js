@@ -1,0 +1,3 @@
+function eee(){
+    alert('eee');
+}
