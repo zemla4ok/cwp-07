@@ -14,7 +14,15 @@ window.onload = function(){
 }
 
 function onChange(){
-    
+    let request = {
+        "sortField": field.options[field.selectedIndex].value,
+        "sortOrder": order.options[order.selectedIndex].value
+    }
+    httpReq = new XMLHttpRequest();
+    httpReq.open("POST", "./api/articles/readall");
+
+    httpReq.onreadystatechange = req;
+    httpReq.send(JSON.stringify(request));
 }
 
 function onClick(page){  
