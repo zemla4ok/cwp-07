@@ -14,12 +14,26 @@ window.onload = function(){
 }
 
 function onChange(){
+    
+}
+
+function onClick(page){  
+    let request = {
+        "sortField": field.options[field.selectedIndex].value,
+        "sortOrder": order.options[order.selectedIndex].value,
+        "page": page.innerHTML
+    }
     httpReq = new XMLHttpRequest();
-    httpReq.open('POST', "./api/articles/readall");
+    httpReq.open("POST", "./api/articles/readall");
+
+    httpReq.onreadystatechange = req;
+    httpReq.send(JSON.stringify(request));
 }
 
 function req(){
     if(httpReq.readyState === 4 && httpReq.status === 200){
+        document.getElementById("articles").innerHTML = "";
+        document.getElementById("pages").innerHTML = "";
         getArticles(httpReq);
     }
 }
@@ -52,8 +66,28 @@ function getArticles(httpReq){
         let text = document.createElement("p");
         text.setAttribute("class", "article-text card-body");
         text.appendChild(document.createTextNode(item.text));
-        div.appendChild(text);
+        div.appendChild(text);     
 
         articles.appendChild(div);
     });
+
+    let pages = document.getElementById("pages");
+    let ul = document.createElement("ul");
+    ul.setAttribute("class", "pages");
+    for(let i = 0; i<res.meta.pages; i++){
+        let li = document.createElement("li");
+        li.setAttribute("class", "page-item");
+        if(i+1 == res.meta.page)
+            li.setAttribute("class", "page-item active");
+
+        let a = document.createElement("a");
+        a.setAttribute("class", "page-link");
+        a.setAttribute("href", "#");
+        a.innerHTML = i+1;
+        a.setAttribute("onclick", "onClick(this)");
+
+        li.appendChild(a);
+        ul.appendChild(li);
+    }
+    pages.appendChild(ul);
 }

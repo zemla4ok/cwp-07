@@ -11,7 +11,7 @@ module.exports.readAll = function readAll(req, res, payload, cb) {
             sortField: 'date',
             sortOrder: 'desc',
             page: 1,
-            limit: 10,
+            limit: 2,
             includeDeps: false
         }
     }
@@ -67,7 +67,7 @@ module.exports.readAll = function readAll(req, res, payload, cb) {
         });
     }
     //pages block
-    let articlesResponse = {items : sortedArticles, meta : { page : 1, pages: 0, count: articles.length, limit: 10}};
+    let articlesResponse = {items : sortedArticles, meta : { page : 1, pages: 0, count: articles.length, limit: 2}};
     if(payload.page !== undefined){
         articlesResponse.meta.page = payload.page;
     }
