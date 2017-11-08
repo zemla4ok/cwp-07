@@ -5,14 +5,16 @@ let articles = require('./articles.json');
 const err = {code: 401, message: 'Invalid Article'};
 
 module.exports.createArticle = function createArticle(req, res, payload, cb) {
-    payload.id = Date.now();
+    console.log(payload);
     if (validator.isValidArticle(payload)) {
         articles.push(payload);
+        console.log("sada");
         //log.log(file, '/api/articles/create', payload);
         cb(null, payload, 'application/json');
         return;
     }
     else{
+        console.log("asdasdasdasda");
         cb(err);
         return;
     }

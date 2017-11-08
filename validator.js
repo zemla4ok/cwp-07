@@ -1,6 +1,6 @@
 exports.isValidComment = function (data) {
     return (data.text !== undefined &&
-        data.date !== undefined &&
+        data.title !== undefined &&
         data.author !== undefined);
 };
 
